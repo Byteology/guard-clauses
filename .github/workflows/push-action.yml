@@ -1,8 +1,5 @@
-name: Push master
-on:
-  push:
-    branches:
-      - master
+name: Push
+on: push
       
 jobs:
   build-and-pack:
@@ -29,7 +26,10 @@ jobs:
         run: dotnet test --no-build --configuration Release --verbosity normal
         
       - name: Pack
-        run: dotnet pack $project -c Release -o ./out --no-restore --no-build 
+        run: |
+          version=$(grep -oP '(?<=<Version>).*?(?=</Version>)' ./${project}/*.csproj)
+          version="${version}-rc-${{ github.run_number }}.${{ github.run_attempt }}"
+          dotnet pack ${project} -c Release /property:Version=${version} -o ./out --no-restore --no-build 
 
       - name: Push package
         run: |
