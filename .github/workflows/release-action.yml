@@ -1,0 +1,40 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+    branches:
+      - master
+      
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      project: Byteology.GuardClauses
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+        
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --no-build --configuration Release --verbosity normal
+          
+      - name: Pack
+        run: dotnet pack $project -c Release -o ./out --no-restore --no-build 
+
+      - name: Push package
+        run: |
+          dotnet nuget push ./out/*.nupkg \
+          -s https://nuget.pkg.github.com/Byteology/index.json -k ${{ secrets.GITHUB_TOKEN }} \
+          --skip-duplicate --no-symbols true
