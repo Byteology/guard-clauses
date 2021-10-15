@@ -1,5 +1,9 @@
 name: Push
-on: push
+
+on:
+  push:
+    branches:
+      - master
       
 jobs:
   build-and-pack:
@@ -26,13 +30,11 @@ jobs:
         run: dotnet test --no-build --configuration Release --verbosity normal
         
       - name: Pack
+        if: ${{ github.ref == 'refs/heads/master' }}
         run: |
           version=$(grep -oP '(?<=<Version>).*?(?=</Version>)' ./${project}/*.csproj)
           version="${version}-rc-${{ github.run_number }}.${{ github.run_attempt }}"
           dotnet pack ${project} -c Release /property:Version=${version} -o ./out --no-restore --no-build 
-
-      - name: Push package
-        run: |
           dotnet nuget push ./out/*.nupkg \
           -s https://nuget.pkg.github.com/Byteology/index.json -k ${{ secrets.GITHUB_TOKEN }} \
           --skip-duplicate --no-symbols true
