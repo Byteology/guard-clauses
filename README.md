@@ -1,4 +1,4 @@
-# Guard Clauses
+# Byteology's Guard Clauses
 
 A simple extensible package containing generic guard clause extensions.
 
@@ -62,7 +62,7 @@ The library supports the following guard clauses out of the box.
 - **NotDefault()** - throws if the argument is equal to its default value.
 - **EqualsTo(value)** - throws if the argument does not equal to the specified value.
 - **NotEqualsTo(value)** - throws if the argument is equal to the specified value.
-- **Specifies(predicate)** - throws if the argument does not satisfy the specified predicate.
+- **Satisfies(predicate)** - throws if the argument does not satisfy the specified predicate.
 
 ### For string parameters
 
