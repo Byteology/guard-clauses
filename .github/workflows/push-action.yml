@@ -30,7 +30,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/master' }}
         run: |
           version=$(grep -oP '(?<=<Version>).*?(?=</Version>)' ./${project}/*.csproj)
-          version="${version}-rc-${{ github.run_number }}.${{ github.run_attempt }}"
+          version="${version}-rc-${{ github.run_number }}"
           dotnet pack ${project} -c Release /property:Version=${version} -o ./out --no-restore --no-build 
           dotnet nuget push ./out/*.nupkg \
           -s https://nuget.pkg.github.com/Byteology/index.json -k ${{ secrets.GITHUB_TOKEN }} \
