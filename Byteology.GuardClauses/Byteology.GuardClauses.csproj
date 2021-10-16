@@ -8,10 +8,11 @@
     <RepositoryUrl>https://github.com/Byteology/guard-clauses</RepositoryUrl>
     <PackageIcon>Icon.png</PackageIcon>
     <Description>A simple package containing generic guard clause extensions.</Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <PackageTags>guard clauses</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Byteology/guard-clauses</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,13 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="8.30.0.37606">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
