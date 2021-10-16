@@ -12,7 +12,6 @@
     <PackageTags>guard clauses</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Byteology/guard-clauses</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
