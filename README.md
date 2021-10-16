@@ -1,4 +1,4 @@
-[![NuGet](https://img.shields.io/nuget/v/Byteology.GuardClauses.svg)](https://www.nuget.org/packages/Byteology.GuardClauses
+[![NuGet](https://img.shields.io/nuget/v/Byteology.GuardClauses.svg)](https://www.nuget.org/packages/Byteology.GuardClauses)
 
 # Byteology's Guard Clauses
 
