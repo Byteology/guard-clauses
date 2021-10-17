@@ -60,7 +60,7 @@ The library supports the following guard clauses out of the box.
 
 ### For all parameter types
 
-- **NotNull()** - throw if the argument is null
+- **NotNull()** - throw if the argument is null.
 - **NotDefault()** - throws if the argument is equal to its default value.
 - **EqualsTo(value)** - throws if the argument does not equal to the specified value.
 - **NotEqualsTo(value)** - throws if the argument is equal to the specified value.
@@ -110,7 +110,9 @@ namespace Byteology.GuardClauses
 // Usage
 public void DepositBook(Book book)
 {
-    Guard.Argument(book, nameof(book)).NotBlacklisted();
+    Guard.Argument(book, nameof(book))
+        .NotNull()
+        .NotBlacklisted();
 
     // Deposit the book
 }
