@@ -8,7 +8,7 @@
     <RepositoryUrl>https://github.com/Byteology/guard-clauses.git</RepositoryUrl>
     <PackageIcon>Icon.png</PackageIcon>
     <Description>A simple package containing generic guard clause extensions.</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageTags>guard clauses</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Byteology/guard-clauses</PackageProjectUrl>
@@ -19,6 +19,7 @@
     <None Include="..\Icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+      <Visible>False</Visible>
     </None>
   </ItemGroup>
 
@@ -26,6 +27,7 @@
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+      <Visible>False</Visible>
     </None>
   </ItemGroup>
 
