@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2E7D295B-DD35-4511-91AB-8EDFC13774FE}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,12 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		CODEOWNERS.txt = CODEOWNERS.txt
 		Icon.png = Icon.png
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses", "Byteology.GuardClauses\Byteology.GuardClauses.csproj", "{6135FE6F-509A-4667-A026-3FCAD7DE1E56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses", "Byteology.GuardClauses\Byteology.GuardClauses.csproj", "{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses.Tests", "Byteology.GuardClauses.Tests\Byteology.GuardClauses.Tests.csproj", "{275B2880-FF70-417E-B449-56F374C0C286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses.Tests", "Byteology.GuardClauses.Tests\Byteology.GuardClauses.Tests.csproj", "{19BF1C06-38EC-45E3-825D-8CFB9D0B3F53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +23,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6135FE6F-509A-4667-A026-3FCAD7DE1E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6135FE6F-509A-4667-A026-3FCAD7DE1E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6135FE6F-509A-4667-A026-3FCAD7DE1E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6135FE6F-509A-4667-A026-3FCAD7DE1E56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{275B2880-FF70-417E-B449-56F374C0C286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{275B2880-FF70-417E-B449-56F374C0C286}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{275B2880-FF70-417E-B449-56F374C0C286}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{275B2880-FF70-417E-B449-56F374C0C286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BF1C06-38EC-45E3-825D-8CFB9D0B3F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BF1C06-38EC-45E3-825D-8CFB9D0B3F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BF1C06-38EC-45E3-825D-8CFB9D0B3F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BF1C06-38EC-45E3-825D-8CFB9D0B3F53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
