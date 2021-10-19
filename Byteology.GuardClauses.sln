@@ -8,14 +8,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		CODEOWNERS.txt = CODEOWNERS.txt
+		coverlet.runsettings = coverlet.runsettings
 		Icon.png = Icon.png
 		LICENSE = LICENSE
 		README.md = README.md
+		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses", "Byteology.GuardClauses\Byteology.GuardClauses.csproj", "{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses.Tests", "Byteology.GuardClauses.Tests\Byteology.GuardClauses.Tests.csproj", "{19BF1C06-38EC-45E3-825D-8CFB9D0B3F53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{78FF7AEE-28F7-46AA-BB5F-8010DFCE1486}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\push-action.yml = .github\workflows\push-action.yml
+		.github\workflows\release-action.yml = .github\workflows\release-action.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +42,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78FF7AEE-28F7-46AA-BB5F-8010DFCE1486} = {2E7D295B-DD35-4511-91AB-8EDFC13774FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {580F2A87-6902-4C59-B4DC-72C03E6AAB6D}
