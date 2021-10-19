@@ -1,4 +1,4 @@
-name: Build
+name: Sonar
 on:
   push:
     branches:
@@ -45,3 +45,8 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Byteology_guard-clauses" /o:"byteology" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet test --configuration Release --verbosity normal
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+      - name: Code coverage
+        working-directory: ./coverage
+        run: |
+          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
+	        sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' sonar-cloud-reporter.xml
