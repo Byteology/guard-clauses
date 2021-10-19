@@ -1,4 +1,9 @@
-[![NuGet](https://img.shields.io/nuget/v/Byteology.GuardClauses.svg)](https://www.nuget.org/packages/Byteology.GuardClauses)
+[![Nuget](https://img.shields.io/nuget/v/Byteology.GuardClauses?style=for-the-badge)](https://www.nuget.org/packages/Byteology.GuardClauses/)
+[![Code Coverage](https://img.shields.io/sonar/coverage/Byteology_guard-clauses/master?color=%2310a910&server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge)](https://sonarcloud.io/dashboard?id=Byteology_guard-clauses)
+
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Byteology_guard-clauses&metric=security_rating)](https://sonarcloud.io/dashboard?id=Byteology_guard-clauses) 
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Byteology_guard-clauses&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Byteology_guard-clauses)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Byteology_guard-clauses&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Byteology_guard-clauses)
 
 # Byteology's Guard Clauses
 
