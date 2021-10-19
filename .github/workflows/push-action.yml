@@ -19,15 +19,15 @@ jobs:
           
       - name: Checkout
         uses: actions/checkout@v2
-           
-      - name: Restore
-        run: dotnet restore
         
       - name: Sonarqube Begin
         run: | 
           dotnet tool install --global dotnet-sonarscanner
-          dotnet sonarscanner begin /o:someorg /k:somekey /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
+          dotnet sonarscanner begin /o:byteology /k:Byteology_guard-clauses /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
           
+      - name: Restore
+        run: dotnet restore
+        
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
