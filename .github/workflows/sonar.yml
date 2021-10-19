@@ -17,7 +17,7 @@ jobs:
           testCommand: dotnet test .
           projectKey: Byteology_guard-clauses
           projectName: guard-clauses
-          sonarOrganisation: Byteology
+          sonarOrganisation: byteology
           beginArguments: >
               /d:sonar.verbose="true"
               /d:sonar.cs.opencover.reportsPaths='"/path/to/coverage.xml","/path/to/coverage.2.xml"'
