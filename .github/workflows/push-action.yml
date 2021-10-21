@@ -6,7 +6,7 @@ on:
       - '**'
       
 jobs:
-  build-and-pack:
+  build-and-analyze:
     runs-on: ubuntu-latest
     env:
       sonar_project_key: Byteology_guard-clauses
