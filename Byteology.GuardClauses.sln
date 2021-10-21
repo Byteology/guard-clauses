@@ -7,12 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		CODEOWNERS.txt = CODEOWNERS.txt
-		coverlet.runsettings = coverlet.runsettings
 		Icon.png = Icon.png
 		LICENSE = LICENSE
-		README.md = README.md
-		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byteology.GuardClauses", "Byteology.GuardClauses\Byteology.GuardClauses.csproj", "{6ADD42B2-D4B4-4D3F-AF64-4E791F15ACDD}"
@@ -23,6 +19,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\push-action.yml = .github\workflows\push-action.yml
 		.github\workflows\release-action.yml = .github\workflows\release-action.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{DBCAC13B-C057-4E0A-9B45-DFC34A4BA10A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CODEOWNERS = .github\CODEOWNERS
+		.github\README.md = .github\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{46C49923-6EF5-46E1-9016-3034D4560C36}"
+	ProjectSection(SolutionItems) = preProject
+		.sonar\coverlet.runsettings = .sonar\coverlet.runsettings
+		.sonar\SonarQube.Analysis.xml = .sonar\SonarQube.Analysis.xml
 	EndProjectSection
 EndProject
 Global
@@ -44,7 +52,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{78FF7AEE-28F7-46AA-BB5F-8010DFCE1486} = {2E7D295B-DD35-4511-91AB-8EDFC13774FE}
+		{78FF7AEE-28F7-46AA-BB5F-8010DFCE1486} = {DBCAC13B-C057-4E0A-9B45-DFC34A4BA10A}
+		{DBCAC13B-C057-4E0A-9B45-DFC34A4BA10A} = {2E7D295B-DD35-4511-91AB-8EDFC13774FE}
+		{46C49923-6EF5-46E1-9016-3034D4560C36} = {2E7D295B-DD35-4511-91AB-8EDFC13774FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {580F2A87-6902-4C59-B4DC-72C03E6AAB6D}
