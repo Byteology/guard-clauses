@@ -33,7 +33,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test --no-build --configuration Release --verbosity normal --settings ./sonar/coverlet.runsettings --logger:trx
+        run: dotnet test --no-build --configuration Release --verbosity normal --settings ./.sonar/coverlet.runsettings --logger:trx
         
       - name: Sonarqube End
         run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
