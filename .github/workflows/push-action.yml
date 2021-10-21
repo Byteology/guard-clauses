@@ -9,7 +9,6 @@ jobs:
   build-and-pack:
     runs-on: ubuntu-latest
     env:
-      project_path: Byteology.GuardClauses
       sonar_project_key: Byteology_guard-clauses
       
     steps:
@@ -39,13 +38,3 @@ jobs:
         run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Pack
-        if: ${{ github.ref == 'refs/heads/master' }}
-        run: |
-          version=$(grep -oP '(?<=<Version>).*?(?=</Version>)' ./${project_path}/*.csproj)
-          version="${version}-rc-${{ github.run_number }}"
-          dotnet pack ${project_path} -c Release /property:Version=${version} -o ./out --no-restore --no-build 
-          dotnet nuget push ./out/*.nupkg \
-          -s https://nuget.pkg.github.com/Byteology/index.json -k ${{ secrets.GITHUB_TOKEN }} \
-          --skip-duplicate --no-symbols true

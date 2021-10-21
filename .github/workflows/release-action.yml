@@ -38,6 +38,7 @@ jobs:
           --skip-duplicate --no-symbols true
 
       - name: Push package - NuGet.org
+        if: "!github.event.release.prerelease"
         run: |
           dotnet nuget push ./out/*.nupkg \
           -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }} \
