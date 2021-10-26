@@ -9,10 +9,12 @@ namespace Byteology.GuardClauses
     {
         /// <summary>
         /// Throws an <see cref="ArgumentException"/> if the argument is not greater than the specified value.
+        /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="other">The object to compare with the argument.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument is not greater than the specified value.</exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> GreaterThan<T>(this IGuardClause<T> clause, T other)
             where T : IComparable<T>
         {
@@ -25,10 +27,12 @@ namespace Byteology.GuardClauses
         }
         /// <summary>
         /// Throws an <see cref="ArgumentException"/> if the argument is not greater than or equal to the specified value.
+        /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="other">The object to compare with the argument.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument is not greater than or equal to the specified value.</exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> GreaterThanOrEqualTo<T>(this IGuardClause<T> clause, T other)
             where T : IComparable<T>
         {
@@ -41,10 +45,12 @@ namespace Byteology.GuardClauses
         }
         /// <summary>
         /// Throws an <see cref="ArgumentException"/> if the argument is not less than the specified value.
+        /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="other">The object to compare with the argument.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument is not less than the specified value.</exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> LessThan<T>(this IGuardClause<T> clause, T other)
             where T : IComparable<T>
         {
@@ -57,10 +63,12 @@ namespace Byteology.GuardClauses
         }
         /// <summary>
         /// Throws an <see cref="ArgumentException"/> if the argument is not less than or equal to the specified value.
+        /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="other">The object to compare with the argument.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument is not less than or equal to the specified value.</exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> LessThanOrEqualTo<T>(this IGuardClause<T> clause, T other)
             where T : IComparable<T>
         {
@@ -74,11 +82,13 @@ namespace Byteology.GuardClauses
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> if the argument is not within the specified 
         /// closed interval.
+        /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="min">The lower bound of the range.</param>
         /// <param name="max">The upper bound of the range.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException">The argument is not within the specified closed interval.</exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> InRange<T>(this IGuardClause<T> clause, T min, T max)
             where T : IComparable<T>
         {
@@ -95,11 +105,13 @@ namespace Byteology.GuardClauses
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> if the argument is not within the specified 
         /// closed interval.
+        /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="min">The lower bound of the range.</param>
         /// <param name="max">The upper bound of the range.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException">The argument is not within the specified closed interval.</exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> NotInRange<T>(this IGuardClause<T> clause, T min, T max)
             where T : IComparable<T>
         {

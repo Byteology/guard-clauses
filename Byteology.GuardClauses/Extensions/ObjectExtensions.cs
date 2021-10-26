@@ -11,7 +11,7 @@ namespace Byteology.GuardClauses
         /// Throws an <see cref="ArgumentNullException"/> if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">The argument is <see langword="null"/>.</exception>
         public static IGuardClause<T> NotNull<T>(this IGuardClause<T> clause)
         {
             if (clause.Argument == null)
@@ -23,7 +23,7 @@ namespace Byteology.GuardClauses
         /// Throws an <see cref="ArgumentException"/> if the argument is equal to its default value.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument is equal to its default value.</exception>
         public static IGuardClause<T> NotDefault<T>(this IGuardClause<T> clause)
         {
             bool shouldThrow = false;
@@ -50,7 +50,7 @@ namespace Byteology.GuardClauses
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="other">The object to compare with the argument.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument does not equal to the specified value.</exception>
         public static IGuardClause<T> EqualsTo<T>(this IGuardClause<T> clause, T other)
         {
             ArgumentException ex = new($"{clause.ArgumentName} should be equal to {other}.");
@@ -73,7 +73,7 @@ namespace Byteology.GuardClauses
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="other">The object to compare with the argument.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument is equal to the specified value.</exception>
         public static IGuardClause<T> NotEqualsTo<T>(this IGuardClause<T> clause, T other)
         {
             ArgumentException ex = new($"{clause.ArgumentName} should not be equal to {other}.");
@@ -97,7 +97,7 @@ namespace Byteology.GuardClauses
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="predicate">The predicate the argument should satisfy.</param>
         /// <param name="predicateDescription">The description of the predicate. It will show in the exception message.</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">The argument does not satisfy the specified predicate.</exception>
         public static IGuardClause<T> Satisfies<T>(
             this IGuardClause<T> clause, 
             Func<T, bool> predicate, 

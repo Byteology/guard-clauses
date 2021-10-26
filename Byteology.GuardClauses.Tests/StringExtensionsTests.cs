@@ -40,12 +40,18 @@ namespace Byteology.GuardClauses.Tests
         [InlineData("aaab", "a+", true)]
         [InlineData("", "a+", true)]
         [InlineData(null, "a+", true)]
+        [InlineData("asd", null, true)]
         public void InFormat(string data, string pattern, bool shouldThrow)
         {
             void action() => Guard.Argument(data, nameof(data)).InFormat(pattern);
 
             if (shouldThrow)
-                Assert.Throws<ArgumentException>(action);
+            {
+                if (data == null || pattern == null)
+                    Assert.Throws<ArgumentNullException>(action);
+                else
+                    Assert.Throws<ArgumentException>(action);
+            }
             else
                 action();
         }
