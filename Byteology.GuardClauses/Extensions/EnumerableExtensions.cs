@@ -10,20 +10,38 @@ namespace Byteology.GuardClauses
     public static class EnumerableExtensions
     {
         /// <summary>
-        /// Throws an <see cref="ArgumentException"/> if the collection is empty.
+        /// Throws an <see cref="ArgumentException"/> if the argument contains any elements.
+        /// Does not throw an exception if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
+        /// <exception cref="ArgumentException">The argument contains any elements.</exception>
+        public static IGuardClause<T> Empty<T>(this IGuardClause<T> clause)
+            where T : IEnumerable
+        {
+            if (clause.Argument?.any() == true)
+                throw new ArgumentException($"{clause.ArgumentName} should be empty.");
+
+            return clause;
+        }
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentException"/> if the argument does not contain any elements.
+        /// Does not throw an exception if the argument is <see langword="null"/>.
+        /// </summary>
+        /// <param name="clause">The guard clause containing the argument to guard.</param>
+        /// <exception cref="ArgumentException">The argument does not contain any elements.</exception>
         public static IGuardClause<T> NotEmpty<T>(this IGuardClause<T> clause)
             where T : IEnumerable
         {
-            if (clause.Argument == null || !clause.Argument.any())
+            if (clause.Argument?.any() == false)
                 throw new ArgumentException($"{clause.ArgumentName} should not be empty.");
 
             return clause;
         }
 
         /// <summary>
-        /// Throws an <see cref="Exception"/> if the number of elements in the argument does not pass the specified guard clause.
+        /// Passes the argument's elements count to the specified guard clause action.
+        /// Does not throw an exception if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="guardClause">The guard clause that the number of elements in the argument should satisfy.</param>
@@ -32,20 +50,26 @@ namespace Byteology.GuardClauses
             Action<IGuardClause<int>> guardClause)
                 where T : IEnumerable
         {
-            int elementsCount = clause.Argument?.count() ?? 0;
+            if (clause.Argument != null)
+            {
+                int elementsCount = clause.Argument.count();
 
-            string name = $"The number of elements in {clause.ArgumentName}";
-            guardClause.Invoke(new GuardClause<int>(elementsCount, name));
+                string name = $"The number of elements in {clause.ArgumentName}";
+                guardClause.Invoke(new GuardClause<int>(elementsCount, name));
+            }
 
             return clause;
         }
 
         /// <summary>
-        /// Throws an <see cref="AggregateException"/> if at least one element of the argument does not pass the specified guard clause.
+        /// Throws an <see cref="AggregateException"/> if at least one element of the 
+        /// argument does not pass the specified guard clause.
+        /// Does not throw an exception if the argument is <see langword="null"/>.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="guardClause">The guard clause that each elements in the argument should satisfy.</param>
-        /// <exception cref="AggregateException"></exception>
+        /// <exception cref="AggregateException">At least one element of the 
+        /// argument does not pass the specified guard clause.</exception>
         public static IGuardClause<IEnumerable<T>> AllElements<T>(
             this IGuardClause<IEnumerable<T>> clause,
             Action<IGuardClause<T>> guardClause)

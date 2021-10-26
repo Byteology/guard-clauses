@@ -1,11 +1,34 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Byteology.GuardClauses.Tests
 {
     public class EnumerableExtensionsTests
     {
+        [Theory]
+        [InlineData(new int[] { 1 }, true)]
+        [InlineData(new int[] { }, false)]
+        public void Empty(int[] data, bool shouldThrow)
+        {
+            void action() => Guard.Argument(data, nameof(data)).Empty();
+
+            if (shouldThrow)
+                Assert.Throws<ArgumentException>(action);
+            else
+                action();
+        }
+
+        [Fact]
+        [SuppressMessage("Blocker Code Smell", "S2699:Tests should include assertions", 
+            Justification = "We are testing if the method does not throw an exception.")]
+        public void Empty_Null()
+        {
+            IEnumerable data = null;
+            Guard.Argument(data, nameof(data)).Empty();
+        }
+
         [Theory]
         [InlineData(new int[] { 1 }, false)]
         [InlineData(new int[] { }, true)]
@@ -34,12 +57,12 @@ namespace Byteology.GuardClauses.Tests
         }
 
         [Fact]
+        [SuppressMessage("Blocker Code Smell", "S2699:Tests should include assertions",
+            Justification = "We are testing if the method does not throw an exception.")]
         public void NotEmpty_Null()
         {
             IEnumerable data = null;
-            void action() => Guard.Argument(data, nameof(data)).NotEmpty();
-
-            Assert.Throws<ArgumentException>(action);
+            Guard.Argument(data, nameof(data)).NotEmpty();
         }
 
         [Theory]
@@ -69,18 +92,13 @@ namespace Byteology.GuardClauses.Tests
                 action();
         }
 
-        [Theory]
-        [InlineData(1, true)]
-        [InlineData(0, false)]
-        public void ElementsCount_Null(int requiredCount, bool shouldThrow)
+        [Fact]
+        [SuppressMessage("Blocker Code Smell", "S2699:Tests should include assertions",
+            Justification = "We are testing if the method does not throw an exception.")]
+        public void ElementsCount_Null()
         {
             IEnumerable data = null;
-            void action() => Guard.Argument(data, nameof(data)).ElementsCount(x => x.EqualsTo(requiredCount));
-
-            if (shouldThrow)
-                Assert.Throws<ArgumentException>(action);
-            else
-                action();
+            Guard.Argument(data, nameof(data)).ElementsCount(x => x.EqualsTo(1));
         }
 
         [Theory]
