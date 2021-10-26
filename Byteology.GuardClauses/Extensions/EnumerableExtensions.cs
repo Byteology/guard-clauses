@@ -16,7 +16,7 @@ namespace Byteology.GuardClauses
         public static IGuardClause<T> NotEmpty<T>(this IGuardClause<T> clause)
             where T : IEnumerable
         {
-            if (!clause.Argument.any())
+            if (clause.Argument == null || !clause.Argument.any())
                 throw new ArgumentException($"{clause.ArgumentName} should not be empty.");
 
             return clause;
