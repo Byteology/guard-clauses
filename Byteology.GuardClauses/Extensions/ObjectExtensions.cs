@@ -96,17 +96,23 @@ namespace Byteology.GuardClauses
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="predicate">The predicate the argument should satisfy.</param>
+        /// <param name="predicateDescription">The description of the predicate. It will show in the exception message.</param>
         /// <exception cref="ArgumentException"></exception>
-        public static IGuardClause<T> Satisfies<T>(this IGuardClause<T> clause, Func<T, bool> predicate)
+        public static IGuardClause<T> Satisfies<T>(
+            this IGuardClause<T> clause, 
+            Func<T, bool> predicate, 
+            string predicateDescription = null)
         {
+            string exceptionMessage;
+            if (predicateDescription == null)
+                exceptionMessage = $"{clause.ArgumentName} should satisfy the specified predicate.";
+            else
+                exceptionMessage = $"{clause.ArgumentName} should satisfy the following condition: \"{predicateDescription}\".";
+
             if (!predicate.Invoke(clause.Argument))
-                throw new ArgumentException($"{clause.ArgumentName} should satisfy the specified predicate.");
+                throw new ArgumentException(exceptionMessage);
 
             return clause;
         }
-
-        
-
-        
     }
 }
