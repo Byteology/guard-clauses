@@ -17,7 +17,6 @@ namespace Byteology.GuardClauses
             where T : IComparable<T>
         {
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-            Guard.Argument(other, nameof(other)).NotNull();
 
             if (clause.Argument.CompareTo(other) <= 0)
                 throw new ArgumentException($"{clause.ArgumentName} should be greater than {other}.");
@@ -34,7 +33,6 @@ namespace Byteology.GuardClauses
             where T : IComparable<T>
         {
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-            Guard.Argument(other, nameof(other)).NotNull();
 
             if (clause.Argument.CompareTo(other) < 0)
                 throw new ArgumentException($"{clause.ArgumentName} should be greater than or equal to {other}.");
@@ -51,7 +49,6 @@ namespace Byteology.GuardClauses
             where T : IComparable<T>
         {
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-            Guard.Argument(other, nameof(other)).NotNull();
 
             if (clause.Argument.CompareTo(other) >= 0)
                 throw new ArgumentException($"{clause.ArgumentName} should be less than {other}.");
@@ -68,7 +65,6 @@ namespace Byteology.GuardClauses
             where T : IComparable<T>
         {
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-            Guard.Argument(other, nameof(other)).NotNull();
 
             if (clause.Argument.CompareTo(other) > 0)
                 throw new ArgumentException($"{clause.ArgumentName} should be less than or equal to {other}.");
@@ -76,7 +72,8 @@ namespace Byteology.GuardClauses
             return clause;
         }
         /// <summary>
-        /// Throws an <see cref="ArgumentOutOfRangeException"/> if the argument is not within the specified range.
+        /// Throws an <see cref="ArgumentOutOfRangeException"/> if the argument is not within the specified 
+        /// closed interval.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="min">The lower bound of the range.</param>
@@ -86,8 +83,6 @@ namespace Byteology.GuardClauses
             where T : IComparable<T>
         {
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-            Guard.Argument(min, nameof(min)).NotNull();
-            Guard.Argument(max, nameof(max)).NotNull();
 
             int minCompare = clause.Argument.CompareTo(min);
             int maxCompare = clause.Argument.CompareTo(max);
@@ -98,7 +93,8 @@ namespace Byteology.GuardClauses
             return clause;
         }
         /// <summary>
-        /// Throws an <see cref="ArgumentOutOfRangeException"/> if the argument is within the specified range.
+        /// Throws an <see cref="ArgumentOutOfRangeException"/> if the argument is not within the specified 
+        /// closed interval.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="min">The lower bound of the range.</param>
@@ -108,8 +104,6 @@ namespace Byteology.GuardClauses
             where T : IComparable<T>
         {
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-            Guard.Argument(min, nameof(min)).NotNull();
-            Guard.Argument(max, nameof(max)).NotNull();
 
             int minCompare = clause.Argument.CompareTo(min);
             int maxCompare = clause.Argument.CompareTo(max);

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Byteology.GuardClauses
 {
@@ -10,20 +10,36 @@ namespace Byteology.GuardClauses
     public static class EnumerableExtensions
     {
         /// <summary>
+        /// Throws an <see cref="ArgumentException"/> if the collection is empty.
+        /// </summary>
+        /// <param name="clause">The guard clause containing the argument to guard.</param>
+        public static IGuardClause<T> NotEmpty<T>(this IGuardClause<T> clause)
+            where T : IEnumerable
+        {
+            if (!clause.Argument.any())
+                throw new ArgumentException($"{clause.ArgumentName} should not be empty.");
+
+            return clause;
+        }
+
+        /// <summary>
         /// Throws an <see cref="Exception"/> if the number of elements in the argument does not pass the specified guard clause.
         /// </summary>
         /// <param name="clause">The guard clause containing the argument to guard.</param>
         /// <param name="guardClause">The guard clause that the number of elements in the argument should satisfy.</param>
-        public static IGuardClause<IEnumerable<T>> ElementsCount<T>(this IGuardClause<IEnumerable<T>> clause, Action<IGuardClause<int>> guardClause)
+        public static IGuardClause<T> ElementsCount<T>(
+            this IGuardClause<T> clause, 
+            Action<IGuardClause<int>> guardClause)
+                where T : IEnumerable
         {
-            Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
+            int elementsCount = clause.Argument?.count() ?? 0;
 
-            int elementsCount = clause.Argument.Count();
             string name = $"The number of elements in {clause.ArgumentName}";
             guardClause.Invoke(new GuardClause<int>(elementsCount, name));
 
             return clause;
         }
+
         /// <summary>
         /// Throws an <see cref="AggregateException"/> if at least one element of the argument does not pass the specified guard clause.
         /// </summary>
@@ -34,29 +50,53 @@ namespace Byteology.GuardClauses
             this IGuardClause<IEnumerable<T>> clause,
             Action<IGuardClause<T>> guardClause)
         {
-            Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
-
             List<Exception> exceptions = new();
 
-            int index = 0;
-            foreach (T element in clause.Argument)
+            if (clause.Argument != null)
             {
-                string name = $"{clause.ArgumentName}[{index}]";
-                try
+                int index = 0;
+                foreach (T element in clause.Argument)
                 {
-                    guardClause.Invoke(new GuardClause<T>(element, name));
+                    string name = $"{clause.ArgumentName}[{index}]";
+                    try
+                    {
+                        guardClause.Invoke(new GuardClause<T>(element, name));
+                    }
+                    catch (Exception ex)
+                    {
+                        exceptions.Add(ex);
+                    }
+                    index++;
                 }
-                catch (Exception ex)
-                {
-                    exceptions.Add(ex);
-                }
-                index++;
             }
 
             if (exceptions.Count > 0)
                 throw new AggregateException(exceptions);
 
             return clause;
+        }
+
+        private static int count(this IEnumerable source)
+        {
+            if (source is ICollection collection)
+                return collection.Count;
+
+            int result = 0;
+            IEnumerator enumerator = source.GetEnumerator();
+
+            while (enumerator.MoveNext())
+                result++;
+
+            return result;
+        }
+
+        private static bool any(this IEnumerable source)
+        {
+            if (source is ICollection collection)
+                return collection.Count != 0;
+
+            IEnumerator enumerator = source.GetEnumerator();
+            return enumerator.MoveNext();
         }
     }
 }
