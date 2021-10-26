@@ -50,8 +50,8 @@ namespace Byteology.GuardClauses
             Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
             Guard.Argument(regexPattern, nameof(regexPattern)).NotNull();
 
-            Match match = clause.Argument != null ? Regex.Match(clause.Argument, regexPattern, options) : null;
-            if (match?.Success != true || clause.Argument != match.Value)
+            Match match = Regex.Match(clause.Argument, regexPattern, options);
+            if (!match.Success || clause.Argument != match.Value)
                 throw new ArgumentException($"{clause.ArgumentName} should be in {regexPattern} format.");
 
             return clause;
