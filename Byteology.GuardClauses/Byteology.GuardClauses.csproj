@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsPackable>True</IsPackable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Byteology</Authors>
@@ -9,11 +9,12 @@
     <RepositoryUrl>https://github.com/Byteology/guard-clauses.git</RepositoryUrl>
     <PackageIcon>Icon.png</PackageIcon>
     <Description>A simple package containing generic guard clause extensions.</Description>
-    <Version>1.2.1</Version>
+    <Version>2.0.0</Version>
     <PackageTags>guard clauses guard-clauses guardClauses</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Byteology/guard-clauses</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
