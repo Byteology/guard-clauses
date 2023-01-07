@@ -88,9 +88,11 @@ The library supports the following guard clauses out of the box.
 
 ### For IEnumerable parameters
 
-- **NotEmpty()** - throws if the argument is not null and does not have any items.
-- **ElementsCount(guardClause)** - throws if the argument is not null and the number of its elements does not pass the specified guard clause.
-- **AllElements(guardClause)** - throws if the argument is not null and at least one of its elements does not pass the specified guard clause.
+- **NotEmpty()** - throws if the argument does not have any items.
+- **ElementsCount(guardClause)** - throws if the number of elements in the argument does not pass the specified guard
+  clause.
+- **AllElements(guardClause)** - throws if at least one of the argument's elements does not pass the specified guard
+  clause.
 
 ## Extending with your own Guard Clauses
 
