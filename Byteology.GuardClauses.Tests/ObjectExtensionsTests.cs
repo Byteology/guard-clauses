@@ -7,6 +7,19 @@ namespace Byteology.GuardClauses.Tests;
 public class ObjectExtensionsTests
 {
 	[Theory]
+	[InlineData(null, true)]
+	[InlineData(8, false)]
+	public void NotNullOnNullable(int? obj, bool shouldThrow)
+	{
+		void action() => Guard.Argument(obj, nameof(obj)).NotNull();
+
+		if (shouldThrow)
+			Assert.Throws<ArgumentNullException>(action);
+		else
+			action();
+	}
+
+	[Theory]
 	[MemberData(nameof(NotNullData))]
 	public void NotNull(object obj, bool shouldThrow)
 	{
