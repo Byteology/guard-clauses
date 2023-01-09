@@ -67,12 +67,18 @@ public class EnumerableExtensionsTests
 	[Theory]
 	[InlineData(new[] { 1, 2, 3 }, false)]
 	[InlineData(new[] { 1 }, true)]
-	public void ElementsCount(int[] data, bool shouldThrow)
+	[InlineData(null, true)]
+	public void ElementsCount(int[]? data, bool shouldThrow)
 	{
 		void action() => Guard.Argument(data, nameof(data)).ElementsCount(x => x.GreaterThan(2));
 
 		if (shouldThrow)
-			Assert.Throws<ArgumentException>(action);
+		{
+			if (data == null)
+				Assert.Throws<ArgumentNullException>(action);
+			else
+				Assert.Throws<ArgumentException>(action);
+		}
 		else
 			action();
 	}
@@ -91,35 +97,23 @@ public class EnumerableExtensionsTests
 			action();
 	}
 
-	[Fact]
-	public void ElementsCountOnNullThrows()
-	{
-		IEnumerable? data = null;
-		void action() => Guard.Argument(data, nameof(data)).ElementsCount(x => x.GreaterThan(2));
-
-		Assert.Throws<ArgumentNullException>(action);
-	}
-
 	[Theory]
 	[InlineData(new[] { 1, 2, 3 }, true)]
 	[InlineData(new[] { 1 }, false)]
-	public void AllElements(int[] data, bool shouldThrow)
+	[InlineData(null, true)]
+	public void AllElements(int[]? data, bool shouldThrow)
 	{
 		void action() => Guard.Argument(data, nameof(data)).AllElements(x => x.LessThanOrEqualTo(2));
 
 		if (shouldThrow)
-			Assert.Throws<AggregateException>(action);
+		{
+			if (data == null)
+				Assert.Throws<ArgumentNullException>(action);
+			else
+				Assert.Throws<AggregateException>(action);
+		}
 		else
 			action();
-	}
-
-	[Fact]
-	public void AllElementsOnNullThrows()
-	{
-		int[]? data = null;
-		void action() => Guard.Argument(data, nameof(data)).AllElements(x => x.LessThanOrEqualTo(2));
-
-		Assert.Throws<ArgumentNullException>(action);
 	}
 
 	private class NotCollectionEnumerable : IEnumerable
