@@ -20,7 +20,7 @@ public static class EnumerableExtensions
 	{
 		Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
 
-		if (clause.Argument.any())
+		if (clause.Argument!.any())
 			throw new ArgumentException($"{clause.ArgumentName} should be empty.");
 
 		return clause;
@@ -37,7 +37,7 @@ public static class EnumerableExtensions
 	{
 		Guard.Argument(clause.Argument, clause.ArgumentName).NotNull();
 
-		if (!clause.Argument.any())
+		if (!clause.Argument!.any())
 			throw new ArgumentException($"{clause.ArgumentName} should not be empty.");
 
 		return clause;
