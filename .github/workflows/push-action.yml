@@ -13,7 +13,7 @@ jobs:
       
     steps:
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 6.0.x
           
@@ -22,7 +22,7 @@ jobs:
         
       - name: Sonarqube Begin
         run: | 
-          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global dotnet-sonarscanner --version 5.15.0
           dotnet sonarscanner begin /o:byteology /k:${sonar_project_key} /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/.sonar/SonarQube.Analysis.xml
           
       - name: Restore
