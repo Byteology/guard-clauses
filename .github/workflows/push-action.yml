@@ -15,7 +15,10 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-    steps:     
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: SonarScanner for .NET 6
         uses: highbyte/sonarscan-dotnet@v2.1.5
         with:
