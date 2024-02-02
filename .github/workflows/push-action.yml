@@ -15,18 +15,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-    steps:
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 6.0.x
-          
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Restore
-        run: dotnet restore
-        
+    steps:     
       - name: SonarScanner for .NET 6
         uses: highbyte/sonarscan-dotnet@v2.1.5
         with:
@@ -37,7 +26,7 @@ jobs:
           # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
           sonarOrganization: ${sonar_organization}
           # Optional command arguments to dotnet build
-          dotnetBuildArguments: --configuration Release --no-restore
+          dotnetBuildArguments: --configuration Release
           # Optional command arguments to dotnet test
           dotnetTestArguments: --no-build --configuration Release --verbosity normal --settings ./.sonar/coverlet.runsettings --logger:trx
           # Optional extra command arguments the the SonarScanner 'begin' command
