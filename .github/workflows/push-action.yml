@@ -30,4 +30,4 @@ jobs:
           # Optional command arguments to dotnet test
           dotnetTestArguments: --no-build --configuration Release --verbosity normal --settings ./.sonar/coverlet.runsettings --logger:trx
           # Optional extra command arguments the the SonarScanner 'begin' command
-          sonarBeginArguments: /s:$GITHUB_WORKSPACE/.sonar/SonarQube.Analysis.xml
+          sonarBeginArguments: /s:.sonar/SonarQube.Analysis.xml
