@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       sonar_project_key: Byteology_guard-clauses
+      sonar_project_name: guard-clauses
       sonar_organization: byteology
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,6 +32,8 @@ jobs:
         with:
           # The key of the SonarQube project
           sonarProjectKey: ${sonar_project_key}
+          # The name of the SonarQube project
+          sonarProjectName: ${sonar_project_name}
           # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
           sonarOrganization: ${sonar_organization}
           # Optional command arguments to dotnet build
