@@ -22,7 +22,7 @@ jobs:
         
       - name: Sonarqube Begin
         run: | 
-          dotnet tool install --global dotnet-sonarscanner --version 5.15.0
+          dotnet tool install --global dotnet-sonarscanner
           dotnet sonarscanner begin /o:byteology /k:${sonar_project_key} /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/.sonar/SonarQube.Analysis.xml
           
       - name: Restore
